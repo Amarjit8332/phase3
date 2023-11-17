@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Sporty Shoes</title>
+</head>
+<body>
+ <a  href="#">SportyShoes.com </a>
+   <ul class="">
+                <li class="">
+                    <a class="" th:href="@{/}" href="#">home</a>
+                </li>
+                <li class="">
+                    <a class="" th:href="@{/shop}" href="#">shop</a>
+                </li>
+                <li class="">
+                    <a class="" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
+                </li>
+                <li class="">
+                    <a class="" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
+                </li>
+                <li class="">
+                    <a class="" th:href="@{/cart}" href="#">cart</a>
+                </li>
+                <li class="">
+                    <span class="" th:text="${cartCount}">0</span>
+                </li>
+            </ul>
+
+               <h5 class="mb-2">Billing details</h5>
+
+                      
+                                    <label for="firstName">First name</label>
+                                    <input type="text" id="firstName" >
+                               
+                                    <label for="lastName">Last name</label>
+                                    <input type="text" id="lastName" >
+                            
+                                <label>Country - <strong>INDIA</strong></label>
+
+                            <label for="form14">Address (Line 1)</label>
+                            <input type="text" required id="form14" placeholder="House number and street name" >
+                       
+                            <label for="form15">Address (Line 2)</label>
+                            <input type="text" id="form15" placeholder="Apartment, suite, unit etc. (optional)"
+                                   class="form-control">
+                       
+                            <label for="form16">Postcode / ZIP</label>
+                            <input type="text" maxlength="6" minlength="6" required id="form16" class="form-control">
+                        
+                            <label for="form17">Town / City</label>
+                            <input type="text" required id="form17" class="form-control">
+
+                            <label for="form18">Phone</label>
+                            <input type="number" minlength="10" maxlength="10" required id="form18" class="form-control">
+                        
+                            <label for="form19">Email address</label>
+                            <input type="email" required id="form19" class="form-control">
+                       
+                            <label for="form76">Additional information</label>
+                            <textarea id="form76" class="md-textarea form-control" rows="4"></textarea>
+                    
+                     <h5 class="mb-3">The total amount </h5>
+
+                        <ul >
+                            <li>
+                                Amount Payable
+                                <span>₹<span th:text="${total}"></span></span>
+                            </li>
+                            <li >
+                                Shipping
+                                <span>Gratis</span>
+                            </li>
+                            <li >
+                                <div>
+                                    <strong>The total amount of</strong>
+                                    <strong>
+                                        <p class="mb-0">(including VAT)</p>
+                                    </strong>
+                                </div>
+                                <span><strong>₹<span th:text="${total}"></span></strong></span>
+                            </li>
+                        </ul>
+
+                        <form action="" method="post" th:action="@{/payNow}" >
+                            <button type="submit"  >Pay Now</button>
+                        </form>
+
+
+                        <a  data-toggle="collapse" href="#collapseExample"
+                           aria-expanded="false" aria-controls="collapseExample">
+                            Add a discount code (optional)
+                            <span><i class="fas fa-chevron-down pt-1"></i></span>
+                        </a>
+
+                      
+                                    <input type="text" placeholder="Enter discount code">
+         
+</body>
+</html>

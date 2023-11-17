@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+
+        <a  href="#">
+            
+            SportyShoes.com
+        </a>
+        
+           
+            <ul >
+                <li >
+                    <a  th:href="@{/}" href="#">home</a>
+                </li>
+                <li >
+                    <a  th:href="@{/shop}" href="#">shop</a>
+                </li>
+                <li >
+                    <a  sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
+                </li>
+                <li >
+                    <a  sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
+                </li>
+                <li >
+                    <a  th:href="@{/cart}" href="#">cart</a>
+                </li>
+                <li >
+                    <span  th:text="${cartCount}">0</span>
+                </li>
+            </ul>
+
+            <h4>Categories</h4>
+            <ul >
+                <a th:href="@{/shop}"><li >All Products</li></a>
+                <a href="" th:each="category, iStat : ${categories}"
+                   th:href="@{/shop/category/{id}(id=${category.id})}"><li
+                                th:text="${category.name}"></li></a>
+
+            </ul>
+       
+            <div style="margin-top: 20px" th:each="product : ${products}">
+                
+                  
+                        <img class="" height="150px" width="150px" th:src="@{${'/productImages/' + product.imageName}}" th:alt="${product.name}">
+                   
+                            <h5  th:text="${product.name}"></h5>
+                            <h4>₹ <span th:text="${product.price}"></span></h4>
+                            <p th:text="${product.description}" >Suresh Dasari is a founder and technical lead developer in tutlane.</p>
+                            <a href="#" th:href="@{/shop/viewproduct/{id}(id=${product.id})}" >View Product</a>
+                   
+</div>
+
+
+
+
+
+</body>
+</html>

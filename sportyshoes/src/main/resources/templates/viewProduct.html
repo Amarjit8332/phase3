@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+
+        <a  href="#">
+            
+            SportyShoes.com
+        </a>
+        
+      
+            <ul ></ul>
+            <ul >
+                <li >
+                    <a  th:href="@{/}" href="#">home</a>
+                </li>
+                <li >
+                    <a  th:href="@{/shop}" href="#">shop</a>
+                </li>
+                <li >
+                    <a  sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
+                </li>
+                <li >
+                    <a  sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
+                </li>
+                <li >
+                    <a th:href="@{/cart}" href="#">cart</a>
+                </li>
+                <li >
+                    <span  th:text="${cartCount}"></span>
+                </li>
+            </ul>
+
+            <img class="mt-5" height="300px" width="300px" src="" th:src="@{${'/productImages/' + product.imageName}}"
+                 alt="">
+       
+            <h2 th:text="${product.name}"></h2>
+            <p th:text="${product.category.name}"></p>
+            <h2>₹ <span th:text="${product.price}"></span></h2>
+            <h5>Weight:
+                <spna th:text="${product.weight}"></spna> grams.
+            </h5>
+            <p th:text="${product.description}"></p>
+            <a href="" th:href="@{/addToCart/{id}(id = ${product.id})}" >Add to cart</a>
+       
+</body>
+</html>

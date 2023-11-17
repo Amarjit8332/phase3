@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+
+        <a class="" href="#">SportyShoes.com</a>
+        
+
+        <div >
+            
+            <ul class="">
+                <li class="">
+                    <a class="" th:href="@{/}" href="#">home</a>
+                </li>
+                <li class="">
+                    <a class="" th:href="@{/shop}" href="#">shop</a>
+                </li>
+                <li class="">
+                    <a class="" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
+                </li>
+                <li class="">
+                    <a class="" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
+                </li>
+                <li class="">
+                    <a class="" th:href="@{/cart}" href="#">cart</a>
+                </li>
+                <li class="">
+                    <span class="" th:text="${cartCount}">0</span>
+                </li>
+            </ul>
+
+        </div>
+   			<h3 class="">welcome to sportyshoes.com</h3>
+					
+					<a th:href="@{/shop}" href="#">
+						Click to Buy Shoes</a>
+</body>
+</html>

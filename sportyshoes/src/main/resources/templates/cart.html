@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+
+        <a  href="#">SportyShoes.com </a>
+  <div >
+            
+            <ul class="">
+                <li class="">
+                    <a class="" th:href="@{/}" href="#">home</a>
+                </li>
+                <li class="">
+                    <a class="" th:href="@{/shop}" href="#">shop</a>
+                </li>
+                <li class="">
+                    <a class="" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
+                </li>
+                <li class="">
+                    <a class="" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
+                </li>
+                <li class="">
+                    <a class="" th:href="@{/cart}" href="#">cart</a>
+                </li>
+                <li class="">
+                    <span class="" th:text="${cartCount}">0</span>
+                </li>
+            </ul>
+
+        </div>
+   
+<main>
+       <h5 >Cart (<span th:text="${cartCount}">2</span> items)</h5>
+       <div  th:each="item, iStat : ${cart}">
+       <h5 th:text="${item.name}">Blue denim shirt</h5>
+       <p >Weight: <span th:text="${item.weight}"></span> grams</p>
+       <a href="#!" th:href="@{/cart/removeItem/{index}(index=${iStat.index})}"  type="button" > Remove item </a>
+       <p><strong>₹<span th:text="${item.price}"></span></strong></p>
+       <p > Do not delay the purchase, adding items to your cart does not mean booking them.</p>
+
+          <h5 >The total amount </h5>
+
+         <ul >
+               <li >  Amount Payable
+                     <span>₹<span th:text="${total}"></span></span>
+               </li>
+               
+               <li >  Shipping
+                     <span>Gratis</span>
+               </li>
+                               
+               <li >  <strong>The total amount of</strong>
+                      <strong>    <p>(including VAT)</p> </strong>
+                <strong>₹<span th:text="${total}"></span></strong>
+               </li>
+              
+          </ul>  
+          
+           <a th:href="@{/checkout}" h >go to checkout</a>
+           <a> Add a discount code (optional) </a>
+           <input type="text" placeholder="Enter discount code">
+           
+</main>
+
+</body>
+</html>

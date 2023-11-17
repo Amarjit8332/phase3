@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+
+        <a href="#"> SportyShoes.com
+        </a>
+        
+            <ul class="navbar-nav">
+                <li >
+                    <a  th:href="@{/}" href="#">home</a>
+                </li>
+                <li >
+                    <a  th:href="@{/shop}" href="#">shop</a>
+                </li>
+                <li >
+                    <a  sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
+                </li>
+                <li >
+                    <a  sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
+                </li>
+                <li >
+                    <a  th:href="@{/cart}" href="#">cart</a>
+                </li>
+
+            </ul>
+
+                    <strong th:text="${result}"></strong>
+                    <br>
+               
+                    <p>
+                    	<em>Receipt #: </em>
+                        <em th:text="${Reciept}">Receipt #: 34522677W</em>
+                
+                    <h1>Receipt</h1>
+                </div>
+
+                <table >
+                    <thead>
+                    <tr>
+                        <th scope="col">SN</th>
+            			<th scope="col">Product</th>
+            			<th scope="col">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="item, iStat : ${products}">
+                    	<th scope="row" th:text="${iStat.index + 1}">1</th>
+						<td th:text="${item.name}">Larry</td>
+						<td th:text="${item.price}">Larry</td>
+                     
+                    </tr>
+                    </tbody>
+                </table>
+                  
+                    <h3>Total Amount Paid: </h3>
+                    <h3 th:text="${total}"> </h3>
+               
+
+
+</body>
+</html>

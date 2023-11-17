@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+</head>
+<body> <a  href="#">SportyShoes.com</a>
+         <ul >
+                <li >
+                    <a  th:href="@{/admin}" href="#">admin-home</a>
+                </li>
+                <li >
+                    <a class="nav-link" th:href="@{/logout}" href="#">logout</a>
+                </li>
+
+            </ul>
+    <h1 >Welcome back, Admin</h1>
+    <p>Easily manage your data from this admin <mark>CMS</mark></p>
+
+                    <h4 >Categories</h4>
+                    <p >Manage the categories section here.</p>
+                    <a href="#" th:href="@{/admin/categories}" >Manage</a>
+
+                    <h4 >Products</h4>
+                    <p >Manage all the products here.</p>
+                    <a href="#" th:href="@{/admin/products}" >Manage</a>
+
+              
+                    <h4 >Registered Users</h4>
+                    <p >See All Registered Users Here.</p>
+                    <a href="#" th:href="@{/admin/users}" >List Users</a>
+
+                
+                    <h4 >Purchase Report</h4>
+                    <p >See Purchase Report Here</p>
+                    <a href="#" th:href="@{/admin/purchaseReport}" >Purchase Report</a>
+
+</body>
+</html>

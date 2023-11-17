@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Sporty Shoes</title>
+</head>
+<body>
+
+        <a  href="#">
+            
+            SportyShoes.com
+        </a>
+        
+            <ul ></ul>
+            <ul >
+                <li >
+                    <a th:href="@{/admin}" href="#">admin-home</a>
+                </li>
+                <li >
+                    <a  th:href="@{/logout}" href="#">logout</a>
+                </li>
+
+            </ul>
+
+    <h3>Add a new Product</h3>
+    <form th:action="@{/admin/products/add}" method="post" th:object="${productDTO}" enctype="multipart/form-data">
+       <input type="hidden" name="id" th:field="*{id}">
+              
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" required th:field="*{name}" name="name" id="name"
+                           placeholder="Enter name">
+
+                    <label for="category">Select Category</label>
+                    <select class="form-control" th:field="*{categoryId}" id="category" name="category">
+                        <option th:each="category :${categories}"
+                                th:value="${category.id}"
+                                th:text="${category.name}"
+                        >
+                    </select>
+               
+                    <label for="price">Price</label>
+                    <input type="number" required th:field="*{price}" name="price" id="price"
+                           placeholder="Price">
+              
+                    <label for="weight">Weight in grams</label>
+                    <input type="number"  required th:field="*{weight}" name="weight" id="weight"
+                           placeholder="Weight">
+                
+                    <label for="description">Product Description</label>
+                    <textarea  rows="5" th:field="*{description}" name="description" id="description"></textarea>
+               
+                <p>Product Image</p>
+                
+                    <input type="file"   name="productImage" accept="image/jpeg, image/png"  id="productImage"/>
+                    <label  for="productImage">Choose file</label>
+             
+                    <img src="#" id="imgPreview" height="100px" width="100px" th:src="@{${'/productImages/' + productDTO.imageName}}" style="margin-top: 20px" alt=" ">
+               
+                <input type="hidden" name="imgName" th:value="${productDTO.imageName}">
+                <button type="submit" class="btn btn-primary">Submit</button>
+           
+    </form>
+
+</body>
+</html>

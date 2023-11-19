@@ -32,9 +32,9 @@ Home page displays options to Shop for Shoes, Login and Cart.
 - Admin can see purchase report of all the done in the system, they can also filter the results by Category and order date
 
 ## Technologies Used
-<b>Frontend</b> - HTML, CSS, Bootstrap4 , Thymleaf <br>
+<b>Frontend</b> - HTML, CSS, Thymleaf <br>
 <b>Backend</b> - Spring boot , Maven , Java , Spring Security <br>
-<b>Database</b> - H2 Database <br>
+<b>Database</b> - MYsql Database <br>
 
-Link:https://github.com/VishnuvardhanAthmakuri/Make-an-E-commerce-Website-for-Sporty-Shoes
+Link:https:https://github.com/Amarjit8332/phase3
 # phase3
